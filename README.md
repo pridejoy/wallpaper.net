@@ -18,30 +18,25 @@ Wallpaper.Net （迷恋图库）是一款基于Net+Vue+UNIAPP+TUNIAOUI的开源�
 
 #### 🍎效果截图
 <table>
-    <tr>
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/1.png"/></td>
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/2.png"/></td>
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/3.png"/></td>
-    </tr>
-    <tr>
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/5.png"/></td>
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/6.png"/></td> 
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/7.png"/></td> 
-    </tr>
-      <tr>
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/8.png"/></td>
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/9.png"/></td>
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/10.png"/></td> 
-    </tr>
-     <tr>
-        <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/11.png"/></td> 
-    </tr>
-     
+  <tr>
+    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/1.png" width="100%"/></td>
+    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/2.png" width="100%" /></td>
+    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/3.png" width="100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/5.png" width="100%"/></td>
+    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/6.png" width="100%"/></td> 
+    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/7.png" width="100%"/></td> 
+  </tr>
+  <tr>
+    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/8.png" width="100%"/></td>
+    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/9.png" width="100%"/></td>
+    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/10.png" width="100%"/></td> 
+  </tr>
+  <tr>
+    <td colspan="3"><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/11.png" width="100%"/></td> 
+  </tr> 
 </table>
- 
-
-
-
 
 #### 🍖基本设计思路
 
