@@ -16,34 +16,34 @@ By modularizing common business scenarios in daily development, and adhering to 
 
 #### 🍁 Experience Address
 
-![](https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/wx7560d334dd837f70.jpg)
+![](./doc/images/wx7560d334dd837f70.jpg)
 
 #### 🍎 Screenshots
 
 <table>
   <tr>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/1.png" width="100%"/></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/2.png" width="100%" /></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/3.png" width="100%"/></td>
+    <td><img src="./doc/images/1.png" width="100%"/></td>
+    <td><img src="./doc/images/2.png" width="100%" /></td>
+    <td><img src="./doc/images/3.png" width="100%"/></td>
   </tr>
   <tr>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/5.png" width="100%"/></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/6.png" width="100%"/></td> 
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/7.png" width="100%"/></td> 
+    <td><img src="./doc/images/5.png" width="100%"/></td>
+    <td><img src="./doc/images/6.png" width="100%"/></td> 
+    <td><img src="./doc/images/7.png" width="100%"/></td> 
   </tr>
   <tr>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/8.png" width="100%"/></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/9.png" width="100%"/></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/10.png" width="100%"/></td> 
+    <td><img src="./doc/images/8.png" width="100%"/></td>
+    <td><img src="./doc/images/9.png" width="100%"/></td>
+    <td><img src="./doc/images/10.png" width="100%"/></td> 
   </tr>
   <tr>
-    <td colspan="3"><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/11.png" width="100%"/></td> 
+    <td colspan="3"><img src="./doc/images/11.png" width="100%"/></td> 
   </tr> 
 </table>
 
 #### 🍖 Basic Design Concept
 
-![Minimal Dependencies](https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/yilai.png)
+![Minimal Dependencies](./doc/images/yilai.png)
 
 * [ ]  Create database
 * [ ]  Backend service (automatically updated daily)

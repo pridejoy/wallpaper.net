@@ -15,34 +15,34 @@ Wallpaper.Net （迷恋图库）是一款基于Net+Vue+UNIAPP+TUNIAOUI的开源�
 
 #### 🍁体验地址
 
-![](https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/wx7560d334dd837f70.jpg)
+![](./doc/images/wx7560d334dd837f70.jpg)
 
 #### 🍎效果截图
 
 <table>
   <tr>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/1.png" width="100%"/></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/2.png" width="100%" /></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/3.png" width="100%"/></td>
+    <td><img src="./doc/images/1.png" width="100%"/></td>
+    <td><img src="./doc/images/2.png" width="100%" /></td>
+    <td><img src="./doc/images/3.png" width="100%"/></td>
   </tr>
   <tr>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/5.png" width="100%"/></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/6.png" width="100%"/></td> 
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/7.png" width="100%"/></td> 
+    <td><img src="./doc/images/5.png" width="100%"/></td>
+    <td><img src="./doc/images/6.png" width="100%"/></td> 
+    <td><img src="./doc/images/7.png" width="100%"/></td> 
   </tr>
   <tr>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/8.png" width="100%"/></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/9.png" width="100%"/></td>
-    <td><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/10.png" width="100%"/></td> 
+    <td><img src="./doc/images/8.png" width="100%"/></td>
+    <td><img src="./doc/images/9.png" width="100%"/></td>
+    <td><img src="./doc/images/10.png" width="100%"/></td> 
   </tr>
   <tr>
-    <td colspan="3"><img src="https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/11.png" width="100%"/></td> 
+    <td colspan="3"><img src="./doc/images/11.png" width="100%"/></td> 
   </tr> 
 </table>
 
 #### 🍖基本设计思路
 
-![极少依赖](https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/yilai.png)
+![极少依赖](./doc/images/yilai.png)
 
 * [ ] 创建表库
 * [ ] 后台服务（每天自动更新）
@@ -86,7 +86,7 @@ SqlSugar 是一款老牌.NET 开源 ORM 框架，由果糖大数据科技团队�
 QQ交流群：725883767
 
 欢迎关注公众号：【Net分享】
-![Net分享](https://gitee.com/Pridejoy/wallpaper.net/raw/master/doc/images/netfenxiang.png)
+![Net分享](./doc/images/netfenxiang.png)
 
 
 

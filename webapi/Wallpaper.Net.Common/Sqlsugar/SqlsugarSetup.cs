@@ -11,11 +11,11 @@ namespace Wallpaper.Net.Common
         {
 
             //注释这行，我是从本地文件读取的，下一行解除注释
-            var ConnectionString = File.ReadAllText("D:\\db.txt");
+            //var ConnectionString = File.ReadAllText("D:\\db.txt");
 
              
             //数据库链接,修改配置里面的SqlServerConnection的字符串
-            //var ConnectionString= AppSettings.GetValue("SqlServerConnection");
+            var ConnectionString= AppSettings.GetValue("SqlServerConnection");
 
 
             var configConnection = new ConnectionConfig
