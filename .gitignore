@@ -20,3 +20,4 @@ bin-release/
 /webapi/.vs/
 /web/node_modules/
 /web/uni_modules/*
+/webapi/Wallpaper.Net.WebApi/appsettings.json
