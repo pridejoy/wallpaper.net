@@ -1,7 +1,8 @@
 import Request from "luch-request"
 
 // 这里填写你后端的api地址 
-let baseUrl = "https://localhost:7057"
+let baseUrl = "https://gallery.hunji.xyz"
+// let baseUrl = "https://localhost:7057"
 
 const http = new Request({
 	baseURL: baseUrl,

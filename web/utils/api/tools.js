@@ -25,18 +25,7 @@ export function getWaterfall(params) {
 	}) 
 }
 
-
-
  
-
-
-//喜欢一张壁纸
-export function linkimages(params) {
-	return request.get("/api/mini/likeimg",{params:params}).then(res => {
-		return res
-	}) 
-}
-
 
 //获取随机壁纸
 export function getRandomGrilNumber(params) {

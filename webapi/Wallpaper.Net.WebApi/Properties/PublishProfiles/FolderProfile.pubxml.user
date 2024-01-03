@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\PrideJoy\wallpaper.net\webapi\Wallpaper.Net.WebApi\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2023-12-28T06:07:43.4123830Z;True|2023-12-28T14:07:01.6688824+08:00;True|2023-12-28T13:50:02.3333799+08:00;True|2023-12-28T13:43:20.1826179+08:00;True|2023-12-28T13:43:02.8219256+08:00;True|2023-12-28T13:36:18.2653310+08:00;True|2023-12-28T13:35:09.0744927+08:00;True|2023-12-28T13:24:28.7850487+08:00;True|2023-12-27T17:42:51.3024760+08:00;True|2023-12-27T17:42:34.2000586+08:00;True|2023-12-27T17:19:44.0763990+08:00;False|2023-12-27T17:18:53.3187760+08:00;True|2023-12-27T15:17:12.9570039+08:00;True|2023-12-27T14:05:51.5067933+08:00;True|2023-12-27T14:05:30.6047877+08:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

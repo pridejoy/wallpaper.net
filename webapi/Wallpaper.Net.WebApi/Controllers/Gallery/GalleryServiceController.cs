@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using System.ComponentModel;
+using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
@@ -11,6 +12,7 @@ using Wallpaper.Net.Repository.Model;
 [Authorize]
 [ApiController]
 [Route("api/[controller]")]
+//[ApiExplorerSettings(GroupName = "Gallery Service")]
 public class GalleryServiceController : ControllerBase
 {
     private readonly ISqlSugarClient _db;
@@ -27,7 +29,7 @@ public class GalleryServiceController : ControllerBase
     /// 获取图库分类
     /// </summary>
     /// <returns></returns>
-
+    [Description("获取图库分类信息")]
     [HttpGet("categorize")]
     public async Task<dynamic> LinkSite()
     {
