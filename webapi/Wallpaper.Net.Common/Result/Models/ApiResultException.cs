@@ -12,8 +12,7 @@ public class ApiResultException : Exception
     /// </summary>
     public ApiResult ApiResult { get; private set; }
 
-    public ApiResultException(string error)
-        : this(new ApiResult())
+    public ApiResultException(string error)  : this(new ApiResult())
     {
         if (!string.IsNullOrEmpty(error))
         {
@@ -21,19 +20,16 @@ public class ApiResultException : Exception
         }
     }
 
-    public ApiResultException(ApiResult apiResult)
-        : this(apiResult, null)
+    public ApiResultException(ApiResult apiResult)  : this(apiResult, null)
     {
     }
 
-    public ApiResultException(Exception innerException)
-        : base(null, innerException)
+    public ApiResultException(Exception innerException)  : base(null, innerException)
     {
         ApiResult = new ApiResult();
     }
 
-    public ApiResultException(ApiResult apiResult, Exception? innerException)
-        : base(apiResult.Message, innerException)
+    public ApiResultException(ApiResult apiResult, Exception? innerException)  : base(apiResult.Message, innerException)
     {
         ApiResult = apiResult;
     }

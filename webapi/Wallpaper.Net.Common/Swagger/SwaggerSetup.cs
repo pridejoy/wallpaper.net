@@ -8,13 +8,7 @@ namespace Wallpaper.Net.Common
     public static class SwaggerSetup
     {
         public static IServiceCollection AddSwaggerSetup(this IServiceCollection services)
-        {
-
-            //swagger注入自定义js代码
-            //services.Configure<SwaggerUIOptions>(options =>
-            //{
-            //    options.InjectJavascript("/swagger/custom.js");
-            //});
+        { 
 
             // 默认配置
             Action<SwaggerGenOptions> defaultSetupAction = options =>
@@ -39,22 +33,13 @@ namespace Wallpaper.Net.Common
                 // 添加注释文档
                 foreach (var xml in xmls)
                 {
-                    options.IncludeXmlComments(xml);
+                    options.IncludeXmlComments(xml,true);
                 }
 
-                //tode 将默认扩展状态设置为 "none"  
-
-                // 开启加权小锁
+                // api有"Authorize" 特性，加上小锁
                 options.OperationFilter<AuthenticationOperationFilter>();
 
-                // 开启加权小锁
-                //用于在 Swagger UI 的每个操作中添加 x-auth-token 响应头，以便在调用 API 后显示 token
-                //options.OperationFilter<AddResponseHeadersFilter>();
-                ////用于将 "Authorize" 字符串添加到 Swagger UI 中每个操作的标题中，提醒用户该操作需要认证/授权才能访问
-                //options.OperationFilter<AppendAuthorizeToSummaryOperationFilter>();
-
-                //// 在 Swagger UI 的每个操作中添加一个 "Authorization" 按钮，并将认证令牌包含在请求头中
-                //options.OperationFilter<SecurityRequirementsOperationFilter>();
+                options.OperationFilter<SecurityRequirementsOperationFilter>(); 
 
                 // 接入 Jwt 认证
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

@@ -1,4 +1,3 @@
-
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
+using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using Wallpaper.Net.Common;
 using Wallpaper.Net.Common.Helper;
@@ -18,13 +18,12 @@ namespace Wallpaper.Net.WebApi
     public class Program
     {
         public static void Main(string[] args)
-        {
-
-            //添加日志记录
-            IOFileHelper.Write("项目启动了" );
-
-
+        { 
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Logging.ClearProviders();
+            builder.Logging.AddConsole();
+
 
             // 添加静态文件读取
             builder.Services.AddSingleton(new AppSettings(builder.Configuration));
@@ -81,6 +80,8 @@ namespace Wallpaper.Net.WebApi
 
             var app = builder.Build();
 
+             
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -96,8 +97,15 @@ namespace Wallpaper.Net.WebApi
 
                     //设置默认的接口文档展开方式，可选值包括None、List和Full。
                     //默认值为None，表示不展开接口文档；
-                    //List表示只展开接口列表；Full表示展开所有接口详情
+                    //List表示只展开接口列表；
+                    //Full表示展开所有接口详情
                     c.DocExpansion(DocExpansion.None); // 设置为完整模式 
+                    c.DisplayRequestDuration();
+                    c.EnablePersistAuthorization();
+                   
+                    //c.UseRequestInterceptor("(request) => { return defaultRequestInterceptor(request); }");
+                    //c.UseResponseInterceptor("(response) => { return defaultResponseInterceptor(response); }");
+
                 });
             }
              
@@ -115,10 +123,7 @@ namespace Wallpaper.Net.WebApi
 
             app.MapControllers();
 
-            app.Run();
-
-
-            IOFileHelper.Write("项目成功了"); 
+            app.Run(); 
         }
     }
 }
