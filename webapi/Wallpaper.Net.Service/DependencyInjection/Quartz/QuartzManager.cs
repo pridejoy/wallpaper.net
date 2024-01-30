@@ -1,47 +1,124 @@
-﻿using Quartz.Impl;
-using Quartz;
-using System.Reflection;
-using SqlSugar;
+﻿//using Quartz.Impl;
+//using Quartz;
+//using System.Reflection;
+//using SqlSugar;
+//using Microsoft.Extensions.Options;
 
-namespace Wallpaper.Net.Service.QuartzNET
-{
-    public class JobScheduler:IJobScheduler
-    {
-        private readonly IScheduler scheduler;
-        private readonly ISqlSugarClient _db;
+//namespace Wallpaper.Net.Service.QuartzNET
+//{
 
-        public JobScheduler(ISqlSugarClient db)
-        {
-            scheduler = new StdSchedulerFactory().GetScheduler().GetAwaiter().GetResult(); 
-            _db = db;
-        }
-         
-        /// <summary>
-        /// 开始执行所有的job
-        /// </summary>
-        /// <returns></returns>
-        public async Task ScheduleJobs()
-        {
-            var jobTypes = GetJobTypes(); // 获取所有实现了 IJob 接口的类型
-            foreach (var type in jobTypes)
-            {
-                var jobDetail = JobBuilder.Create(type).Build();
-                var trigger = TriggerBuilder.Create().WithCronSchedule(GetCronExpression(type)).Build();
-                await scheduler.ScheduleJob(jobDetail, trigger);
-            }
-            await scheduler.Start();
-        }
+//    public class QuartzManager : IQuartzManager
+//    {
+//        private readonly IServiceProvider _serviceProvider;
+//        private readonly ISchedulerFactory _schedulerFactory;
+//        private readonly ILogger<QuartzManager> _logger;
 
-        private IEnumerable<Type> GetJobTypes()
-        {
-            return Assembly.GetExecutingAssembly().GetTypes().Where(type => typeof(IJob).IsAssignableFrom(type));
-        }
+//        public QuartzManager(IServiceProvider serviceProvider,
+//                             ISchedulerFactory schedulerFactory,
+//                             ILogger<QuartzManager> logger)
+//        {
+//            _serviceProvider = serviceProvider;
+//            _schedulerFactory = schedulerFactory;
+//            _logger = logger;
+//        }
 
+//        public async Task<IScheduler> GetScheduler(CancellationToken token = default)
+//        {
+//            return await _schedulerFactory.GetScheduler(token);
+//        }
 
-        private string GetCronExpression(Type type)
-        {
-            // 可以根据需要自定义获取 cron 表达式的逻辑
-            return (string)type.GetField("Cron", BindingFlags.Static | BindingFlags.Public)?.GetValue(null);
-        }
-    }
-}
+//        public async Task Start(CancellationToken token = default)
+//        {
+//            var scheduler = await GetScheduler();
+
+//            _logger.LogInformation($"Job scheduling start.");
+
+//            await scheduler.Start(token);
+
+//            using var scope = _serviceProvider.CreateScope();
+//            var serviceProvider = scope.ServiceProvider; 
+//        }
+
+//        public async Task Shutdown(CancellationToken token = default)
+//        {
+//            var scheduler = await GetScheduler();
+
+//            _logger.LogInformation($"Job scheduling shutdown.");
+
+//            await scheduler.Shutdown(token);
+
+//            using var scope = _serviceProvider.CreateScope();
+//            var serviceProvider = scope.ServiceProvider; 
+//        }
+
+//        public async Task<bool> CheckExists(string jobName, CancellationToken token = default)
+//        {
+//            var scheduler = await GetScheduler();
+//            var jobKey = new JobKey(jobName);
+//            return await scheduler.CheckExists(jobKey, token);
+//        }
+
+//        public Task AddJob<T>(JobInfo jobInfo, CancellationToken token = default)
+//            where T : IJob
+//        {
+//            return AddJob(typeof(T), jobInfo, token);
+//        }
+
+//        public async Task AddJob(Type jobType, JobInfo jobInfo, CancellationToken token = default)
+//        {
+//            var scheduler = await GetScheduler();
+
+//            //_logger.LogInformation($"AddJob: {JsonHelper.Serialize(jobInfo)}");
+
+//            var jobKey = new JobKey(jobInfo.Name);
+//            var job = JobBuilder.Create(jobType)
+//                            .WithIdentity(jobKey)
+//                            .UsingJobData(JobSchedulingConst.JobNameKey, jobInfo.Name)
+//                            .Build();
+
+//            var triggers = new List<ITrigger>();
+//            foreach (var triggerInfo in jobInfo.Triggers)
+//            {
+//                var trigger = TriggerBuilder.Create()
+//                    .ForJob(jobKey)
+//                    .WithIdentity(triggerInfo.Name)
+//                    .WithCronSchedule(triggerInfo.Cron)
+//                    .Build();
+//                triggers.Add(trigger);
+//            }
+
+//            await scheduler.ScheduleJob(job, triggers, true, token);
+//        }
+
+//        public async Task<bool> DeleteJob(string jobName, CancellationToken token = default)
+//        {
+//            var scheduler = await GetScheduler();
+
+//            _logger.LogInformation($"DeleteJob {jobName}");
+
+//            var jobKey = new JobKey(jobName);
+//            return await scheduler.DeleteJob(jobKey, token);
+//        }
+
+//        public async Task PauseJob(string jobName, CancellationToken token = default)
+//        {
+//            var scheduler = await GetScheduler();
+
+//            _logger.LogInformation($"PauseJob {jobName}");
+
+//            var jobKey = new JobKey(jobName);
+//            await scheduler.PauseJob(jobKey, token);
+//        }
+
+//        public async Task ResumeJob(string jobName, CancellationToken token = default)
+//        {
+//            var scheduler = await GetScheduler();
+
+//            _logger.LogInformation($"ResumeJob {jobName}");
+
+//            var jobKey = new JobKey(jobName);
+//            await scheduler.ResumeJob(jobKey, token);
+//        }
+//    }
+
+//}

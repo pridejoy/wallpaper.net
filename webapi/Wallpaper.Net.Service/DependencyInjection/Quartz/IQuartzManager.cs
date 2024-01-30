@@ -17,8 +17,7 @@ namespace Wallpaper.Net.Service.QuartzNET
         Task<bool> CheckExists(string jobName, CancellationToken token = default);
 
         // 添加作业到Quartz调度程序，使用泛型类型参数
-        Task AddJob<T>(JobInfo jobInfo, CancellationToken token = default)
-            where T : IJob;
+        Task AddJob<T>(JobInfo jobInfo, CancellationToken token = default)  where T : IJob;
 
         // 添加作业到Quartz调度程序，使用作业类型参数
         Task AddJob(Type jobType, JobInfo jobInfo, CancellationToken token = default);

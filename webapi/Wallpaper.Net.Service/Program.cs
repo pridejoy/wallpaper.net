@@ -15,19 +15,21 @@ namespace Wallpaper.Net.Service
             builder.Host.UseSystemd();
              
             //注册Sqlsugar相关服务
-            builder.Services.AddSqlsugarSetup();
+            //builder.Services.AddSqlsugarSetup();
 
-            // Quartz 定时任务
-            builder.Services.AddQuartz(); 
+            //注册 Quartz 定时任务
+            //builder.Services.AddQuartz(); 
 
             //services.AddHostedService<QuartzHostedService>();
 
-            builder.Services.AddSingleton<IQuartzManager, QuartzManager>();
+            //builder.Services.AddSingleton<IQuartzManager, QuartzManager>();
 
-
+            builder.Services.AddSingleton<JobService>();
+             
             var app = builder.Build();
             //获取任务服务
-            var jobService= app.Services.GetService<IJobService>();
+            var jobService= app.Services.GetService<JobService>();
+            //开始执行
             await jobService.StartAll();
 
             FileHelper.Write("任务开始了", "run");

@@ -15,12 +15,15 @@ namespace Wallpaper.Net.Service.QuartzNET
         /// <param name="context"></param>
         /// <returns></returns>
         public async Task Execute(IJobExecutionContext context)
-        {
-
-            //业务处理逻辑
-            Console.WriteLine("Hello2222");
-
-
+        { 
+            try
+            {
+                //业务处理逻辑
+                Console.WriteLine("Hello2222");
+            }
+            catch (Exception ex)
+            { 
+            }  
         }
     }
 

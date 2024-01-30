@@ -12,12 +12,7 @@ namespace Wallpaper.Net.Service.QuartzNET
         /// </summary>
         public static string Cron = "*/1 * * * * ?"; 
 
-        private readonly ISqlSugarClient _db;
-
-        public HelloQuartzJob(ISqlSugarClient db)
-        {
-            _db = db;
-        }
+ 
         public async Task Execute(IJobExecutionContext context)
         {
             try
@@ -26,7 +21,7 @@ namespace Wallpaper.Net.Service.QuartzNET
                 Console.WriteLine("111111111111111");
 
                 // 查询数据库表
-                var date = await _db.Queryable<bs_gallery>()
+                var date = await Sqlsugar.db.Queryable<bs_gallery>()
                     .Where(x => x.IsDelete == false)
                     .OrderBy(x => SqlFunc.GetRandom())
                     .FirstAsync();
