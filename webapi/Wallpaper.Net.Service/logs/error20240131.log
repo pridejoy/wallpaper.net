@@ -1,0 +1,5 @@
+﻿2024/1/31 9:15:40  :中文提示 :  连接数据库过程中发生错误，检查服务器是否正常连接字符串是否正确，错误信息：The connection was not closed. The connection's current state is connecting.DbType="SqlServer";ConfigId="".
+English Message : Connection open error . The connection was not closed. The connection's current state is connecting.DbType="SqlServer";ConfigId="" 
+2024/1/31 9:16:14  :中文提示 :  连接数据库过程中发生错误，检查服务器是否正常连接字符串是否正确，错误信息：The connection was not closed. The connection's current state is connecting.DbType="SqlServer";ConfigId="".
+English Message : Connection open error . The connection was not closed. The connection's current state is connecting.DbType="SqlServer";ConfigId="" 
+2024/1/31 9:24:29  :The connection does not support MultipleActiveResultSets.

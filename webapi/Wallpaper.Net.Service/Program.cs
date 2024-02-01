@@ -12,17 +12,7 @@ namespace Wallpaper.Net.Service
             //指定项目可以部署为Windows服务
             builder.Host.UseWindowsService();
             //指定项目可以部署为Linux服务,可以和 UseWindowsService() 共存
-            builder.Host.UseSystemd();
-             
-            //注册Sqlsugar相关服务
-            //builder.Services.AddSqlsugarSetup();
-
-            //注册 Quartz 定时任务
-            //builder.Services.AddQuartz(); 
-
-            //services.AddHostedService<QuartzHostedService>();
-
-            //builder.Services.AddSingleton<IQuartzManager, QuartzManager>();
+            builder.Host.UseSystemd(); 
 
             builder.Services.AddSingleton<JobService>();
              
@@ -33,6 +23,7 @@ namespace Wallpaper.Net.Service
             await jobService.StartAll();
 
             FileHelper.Write("任务开始了", "run");
+
             app.Run();
         }
     }

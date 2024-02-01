@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Newtonsoft.Json;
@@ -47,7 +48,8 @@ namespace Wallpaper.Net.WebApi
 
             // ≈‰÷√Json—°œÓ
             builder.Services.AddJsonOptions();
-             
+
+            builder.Services.AddSingleton<MemoryCache>();
 
             // ÃÌº”sqlsugar
             builder.Services.AddSqlsugarSetup();
