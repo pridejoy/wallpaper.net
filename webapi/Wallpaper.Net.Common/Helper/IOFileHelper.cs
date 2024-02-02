@@ -8,6 +8,9 @@ namespace Wallpaper.Net.Common.Helper
 {
     public static class IOFileHelper
     {
+               //相对路径
+        //await WriteAsync("file.txt", "Hello World", true, "UTF-8");
+        //await WriteAsync("subfolder/file.txt", "Hello World", true, "UTF-8");
         /// <summary>
         /// 创建文件或者附加内容
         /// </summary>
@@ -15,11 +18,11 @@ namespace Wallpaper.Net.Common.Helper
         /// <param name="Encode">编码方式</param>
         /// <param name="filePath">文件路径(支持相对路径或绝对路径)</param>
         /// <param name="IsAppend">附加还是全新写入</param>
-        public static bool Write(string Data, string filePath="", bool IsAppend = true, string Encode = "UTF-8")
+        public static async Task<bool> Write(string Data, string filePath = "", bool IsAppend = true, string Encode = "UTF-8")
         {
-            filePath = string.IsNullOrEmpty(filePath) ? "logs/" + DateTime.Now.ToString("yyyyMMdd") + ".log" : Encode;
+            filePath = filePath.Contains("txt") ? filePath : "logs/" + filePath + DateTime.Now.ToString("yyyyMMdd") + ".log";
             Encode = string.IsNullOrEmpty(Encode) ? "UTF-8" : Encode;
-            Data = DateTime.Now.ToString()+"  :"  + Data + "\n";
+            Data = DateTime.Now.ToString() + "  :" + Data + "\n";
             try
             {
                 //获取文件对象
