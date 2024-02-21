@@ -44,7 +44,7 @@ namespace Wallpaper.Net.Servers
 
                     default:
                         //todo 记录登录失败的日志
-                        throw new Exception($"小程序登录错误，错误代码：{res.ToJsonString()}");
+                        throw new Exception($"小程序登录错误，错误代码：{res.ToJson()}");
                 }
             }
                  

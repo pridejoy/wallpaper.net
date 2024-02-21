@@ -5,7 +5,9 @@ using Newtonsoft.Json;
 namespace Wallpaper.Net.Common;
 
 
-
+/// <summary>
+/// 自定义缓存帮助类
+/// </summary>
 public static class CacheHelper
 {
     private static IDistributedCache? _cache;
@@ -38,10 +40,17 @@ public static class CacheHelper
         return data != null ? Encoding.Unicode.GetString(data) : null;
     }
 
-    public static async Task SetAsync(string key, string value, DistributedCacheEntryOptions options)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    /// <param name="options">各种设置，如过期时间、滑动过期时间等</param>
+    /// <returns></returns>
+    public static async Task SetAsync(string key, string value, DistributedCacheEntryOptions options=null)
     {
         var bytes = Encoding.Unicode.GetBytes(value);
-        await Cache.SetAsync(key, bytes, options);
+        await Cache.SetAsync(key, bytes, options??new DistributedCacheEntryOptions());
 
         // 更新键集
         await UpdateKeySetAsync(key);
@@ -56,11 +65,11 @@ public static class CacheHelper
         return JsonConvert.DeserializeObject<T>(json);
     }
 
-    public static async Task SetObjectAsync<T>(string key, T value, DistributedCacheEntryOptions options)
+    public static async Task SetObjectAsync<T>(string key, T value, DistributedCacheEntryOptions options =null)
     {
         var json = JsonConvert.SerializeObject(value);
         var bytes = Encoding.UTF8.GetBytes(json);
-        await Cache.SetAsync(key, bytes, options);
+        await Cache.SetAsync(key, bytes, options??new DistributedCacheEntryOptions());
 
         // 更新键集
         await UpdateKeySetAsync(key);
@@ -110,4 +119,23 @@ public static class CacheHelper
         return filteredKeys;
     }
     #endregion
+
+
+
+
+    public static DistributedCacheEntryOptions GetDefaultCacheEntryOptions()
+    {
+        // 创建一个新的DistributedCacheEntryOptions实例
+        var options = new DistributedCacheEntryOptions();
+
+        // 设置绝对过期时间为1小时后
+        //options.SetAbsoluteExpiration(TimeSpan.FromHours(1));
+
+        // 设置滑动过期时间为30分钟
+        // 滑动过期时间是指如果在此时间间隔内访问了缓存项，则过期时间将重置
+        //options.SetSlidingExpiration(TimeSpan.FromMinutes(30));
+
+        // 返回配置好的缓存项选项
+        return options;
+    }
 }

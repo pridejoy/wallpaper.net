@@ -82,14 +82,14 @@ namespace Wallpaper.Net.WebApi.Filter
                 ClassName = context.Controller.ToString(),
                 MethodName = actionDescriptor?.ActionName,
                 ReqMethod = httpRequest.Method,
-                Param = JsonHelper.ToJsonString(context.ActionArguments.Count < 1 ? "" : context.ActionArguments),
+                Param = context.ActionArguments.Count < 1 ? "" : context.ActionArguments.ToJson(),
                 // Result = JSON.Serialize(actionContext.Result), // 序列化异常，比如验证码
                 ElapsedTime = sw.ElapsedMilliseconds,
                 OpTime = DateTime.Now,
 
             };
 
-            await Console.Out.WriteLineAsync(JsonHelper.ToJsonString(entity));
+            await Console.Out.WriteLineAsync(entity.ToJson());
             //发送到队列或者直接添加到数据库
             //await _eventPublisher.PublishAsync(new ChannelEventSource("Create:OpLog", ));
         }

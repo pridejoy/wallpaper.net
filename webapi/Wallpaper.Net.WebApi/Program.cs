@@ -1,18 +1,4 @@
-using System.Text.Json;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
-using Swashbuckle.AspNetCore.Swagger;
-using Swashbuckle.AspNetCore.SwaggerUI;
-using Wallpaper.Net.Common;
-using Wallpaper.Net.Common.Helper;
-using Wallpaper.Net.Common.Jwt;
-using Wallpaper.Net.Servers;
-using Wallpaper.Net.WebApi.Filter;
+
 
 namespace Wallpaper.Net.WebApi
 {
@@ -21,14 +7,18 @@ namespace Wallpaper.Net.WebApi
         public static void Main(string[] args)
         { 
             var builder = WebApplication.CreateBuilder(args);
-
+            //日志
             builder.Logging.ClearProviders();
             builder.Logging.AddConsole();
 
+            // 添加静态文件读取(优先级比较高)
+            AppSettings.AddConfigSteup(builder.Configuration);
 
-            // 添加静态文件读取
-            builder.Services.AddSingleton(new AppSettings(builder.Configuration));
-              
+            //builder.Services.AddSingleton<MemoryCache>();
+            // 缓存
+            builder.Services.AddCacheSetup();
+
+             
             // 添加过滤器
             builder.Services.AddControllers(options =>
             {
@@ -48,9 +38,7 @@ namespace Wallpaper.Net.WebApi
 
             // 配置Json选项
             builder.Services.AddJsonOptions();
-
-            builder.Services.AddSingleton<MemoryCache>();
-
+              
             // 添加sqlsugar
             builder.Services.AddSqlsugarSetup();
 
@@ -75,13 +63,11 @@ namespace Wallpaper.Net.WebApi
             builder.Services.AddCorsSetup();
             // 添加EndpointsApiExplorer
             builder.Services.AddEndpointsApiExplorer();
-
-
+             
             //注册其他依赖
             builder.Services.AddTransient<GalleryServiceController>();
 
             var app = builder.Build();
-
              
 
             // Configure the HTTP request pipeline.

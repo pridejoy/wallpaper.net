@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using Wallpaper.Net.Servers.WeatherForecast;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace Wallpaper.Net.WebApi.Controllers
 {
@@ -18,16 +19,17 @@ namespace Wallpaper.Net.WebApi.Controllers
     public class WeatherForecastController : ControllerBase
     {
 
-        private readonly MemoryCache _cache;
+        //private readonly MemoryCache _memorecache;
         private readonly WeatherForecastService _weatherForecastService;
         private  readonly IHttpContextAccessor _httpContext;
-
+        private readonly IDistributedCache _cache;
         public WeatherForecastController(WeatherForecastService weatherForecastService ,
-            IHttpContextAccessor httpContextAccessor,MemoryCache memoryCache)
+            IDistributedCache cache ,
+            IHttpContextAccessor httpContextAccessor)
         {
             _weatherForecastService = weatherForecastService;
-            _httpContext = httpContextAccessor;
-            _cache = memoryCache;
+            _httpContext = httpContextAccessor; 
+            _cache = cache;
         }
 
         /// <summary>
@@ -102,24 +104,32 @@ namespace Wallpaper.Net.WebApi.Controllers
         {
             throw new ApiResultException("测试异常");
         }
+ 
 
-        [HttpGet("cachetest")]
-        public string MyAction()
+        /// <summary>
+        /// 测试分布式缓存
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("cachetest-1")]
+        public async Task<string> CacheTest1()
         {
-            // 使用 _cache 对象进行缓存操作，比如添加数据到缓存、从缓存中获取数据等
-            string cachedData = _cache.Get("key1") as string;
-            if (cachedData != null)
-            {
-                // 缓存命中，直接使用缓存中的数据
-                return "Data from cache: " + cachedData;
-            }
-            else
-            {
-                // 缓存未命中，需要从数据源中获取数据并添加到缓存
-                string newData = "new data";
-                _cache.Set("key1", newData, DateTimeOffset.Now.AddMinutes(5));
-                return "Data from data source: " + newData;
-            }
+          await CacheHelper.SetAsync("123", "456");
+          var a = await CacheHelper.GetAsync("123");
+          var b = new Student { name="张三",sex="男" };
+          await CacheHelper.SetObjectAsync("z", b);
+          var c=await CacheHelper.GetObjectAsync<Student>("123");
+          var d =await CacheHelper.GetAllKeysAsync();
+
+          return "ok";
+        }
+
+        /// <summary>
+        /// 缓存测试类
+        /// </summary>
+        public class Student { 
+        
+            public string name { get;set; }
+            public string sex { get;set; }
         }
     }
 }
