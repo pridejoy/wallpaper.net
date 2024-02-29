@@ -17,6 +17,8 @@ public static class CorsServiceCollectionExtensions
     /// <returns></returns>
     public static IServiceCollection AddCorsSetup(this IServiceCollection services, Action<CorsOptions>? setupAction = null)
     {
+        //教程
+        //https://www.dotnetshare.com/guid/cors.html
         services.AddCors(options =>
         {
             options.AddDefaultPolicy(policy =>

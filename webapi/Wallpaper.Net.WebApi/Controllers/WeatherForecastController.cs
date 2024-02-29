@@ -117,10 +117,11 @@ namespace Wallpaper.Net.WebApi.Controllers
           var a = await CacheHelper.GetAsync("123");
           var b = new Student { name="ÕÅÈý",sex="ÄÐ" };
           await CacheHelper.SetObjectAsync("z", b);
-          var c=await CacheHelper.GetObjectAsync<Student>("123");
-          var d =await CacheHelper.GetAllKeysAsync();
+          var c=await CacheHelper.GetObjectAsync<Student>("z");
 
-          return "ok";
+          await CacheHelper.RemoveAsync("z");
+          var d = await CacheHelper.GetObjectAsync<Student>("z");
+            return "ok";
         }
 
         /// <summary>

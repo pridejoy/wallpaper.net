@@ -12,6 +12,7 @@ public static class CacheHelper
 {
     private static IDistributedCache? _cache;
 
+ 
     private static IDistributedCache Cache
     {
         get
@@ -34,28 +35,24 @@ public static class CacheHelper
 
     #region 缓存操作方法
 
+    /// <summary>
+    /// 异步获取缓存
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static async Task<string?> GetAsync(string key)
     {
         var data = await Cache.GetAsync(key);
         return data != null ? Encoding.Unicode.GetString(data) : null;
     }
 
+
     /// <summary>
-    /// 
+    /// 异步获取缓存
     /// </summary>
+    /// <typeparam name="T"></typeparam>
     /// <param name="key"></param>
-    /// <param name="value"></param>
-    /// <param name="options">各种设置，如过期时间、滑动过期时间等</param>
     /// <returns></returns>
-    public static async Task SetAsync(string key, string value, DistributedCacheEntryOptions options=null)
-    {
-        var bytes = Encoding.Unicode.GetBytes(value);
-        await Cache.SetAsync(key, bytes, options??new DistributedCacheEntryOptions());
-
-        // 更新键集
-        await UpdateKeySetAsync(key);
-    }
-
     public static async Task<T?> GetObjectAsync<T>(string key)
     {
         var data = await Cache.GetAsync(key);
@@ -65,23 +62,42 @@ public static class CacheHelper
         return JsonConvert.DeserializeObject<T>(json);
     }
 
+
+    /// <summary>
+    /// 异步设置缓存
+    /// </summary>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    /// <param name="options">各种设置，如过期时间、滑动过期时间等</param>
+    /// <returns></returns>
+    public static async Task SetAsync(string key, string value, DistributedCacheEntryOptions options=null)
+    {
+        var bytes = Encoding.Unicode.GetBytes(value);
+        await Cache.SetAsync(key, bytes, options??new DistributedCacheEntryOptions()); 
+    }
+
+
+    /// <summary>
+    /// 异步设置缓存
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="key"></param>
+    /// <param name="value"></param>
+    /// <param name="options"></param>
+    /// <returns></returns>
     public static async Task SetObjectAsync<T>(string key, T value, DistributedCacheEntryOptions options =null)
     {
         var json = JsonConvert.SerializeObject(value);
         var bytes = Encoding.UTF8.GetBytes(json);
         await Cache.SetAsync(key, bytes, options??new DistributedCacheEntryOptions());
-
-        // 更新键集
-        await UpdateKeySetAsync(key);
+         
     }
-
-    private static async Task UpdateKeySetAsync(string key)
-    {
-        var keySet = await GetObjectAsync<HashSet<string>>(KeySetCacheKey) ?? new HashSet<string>();
-        keySet.Add(key);
-        await SetObjectAsync(KeySetCacheKey, keySet, new DistributedCacheEntryOptions());
-    }
-
+ 
+    /// <summary>
+    /// 异步删除缓存
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
     public static async Task RemoveAsync(string key)
     {
         await Cache.RemoveAsync(key);
@@ -93,47 +109,28 @@ public static class CacheHelper
             await SetObjectAsync(KeySetCacheKey, keySet, new DistributedCacheEntryOptions());
         }
     }
+     
 
-
-    /// <summary>
-    /// 异步获取所有缓存中的键。
-    /// </summary>
-    /// <returns>包含所有缓存键的集合。</returns>
-    public static async Task<HashSet<string>?> GetAllKeysAsync()
-    {
-        return await GetObjectAsync<HashSet<string>>(KeySetCacheKey);
-    }
-
-    /// <summary>
-    /// 获取指定字段的key
-    /// </summary>
-    /// <param name="prefix"></param>
-    /// <returns></returns>
-    public static async Task<IEnumerable<string>> GetKeysByPrefixAsync(string prefix)
-    {
-        var allKeys = await GetAllKeysAsync();
-        if (allKeys == null) return Enumerable.Empty<string>();
-
-        // 使用LINQ查询来筛选具有指定前缀的键
-        var filteredKeys = allKeys.Where(key => key.StartsWith(prefix));
-        return filteredKeys;
-    }
+ 
     #endregion
 
 
 
-
+    /// <summary>
+    /// 示例，无作用
+    /// </summary>
+    /// <returns></returns>
     public static DistributedCacheEntryOptions GetDefaultCacheEntryOptions()
     {
         // 创建一个新的DistributedCacheEntryOptions实例
         var options = new DistributedCacheEntryOptions();
 
         // 设置绝对过期时间为1小时后
-        //options.SetAbsoluteExpiration(TimeSpan.FromHours(1));
+        options.SetAbsoluteExpiration(TimeSpan.FromHours(1));
 
         // 设置滑动过期时间为30分钟
         // 滑动过期时间是指如果在此时间间隔内访问了缓存项，则过期时间将重置
-        //options.SetSlidingExpiration(TimeSpan.FromMinutes(30));
+        options.SetSlidingExpiration(TimeSpan.FromMinutes(30));
 
         // 返回配置好的缓存项选项
         return options;

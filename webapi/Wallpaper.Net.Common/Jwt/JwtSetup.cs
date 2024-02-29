@@ -70,8 +70,8 @@ namespace Wallpaper.Net.Common.Jwt
                     await context.Response.WriteAsync("403");
                 }
             };
-             
-            // 配置JWT认证
+
+            //添加身份验证
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -80,7 +80,7 @@ namespace Wallpaper.Net.Common.Jwt
             AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = tokenValidationParameters;
-                //options.Events = jwtBearerEvents;
+                options.Events = jwtBearerEvents;
             });
 
             return services;

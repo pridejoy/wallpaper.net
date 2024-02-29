@@ -15,7 +15,8 @@ namespace Wallpaper.Net.Common
     {
         public static IServiceCollection AddAuthorizationSetup(this IServiceCollection services) 
         {
-             
+
+            //添加授权
             services.AddAuthorization();
 
             services.AddTransient<IAuthorizationPolicyProvider, SimpleAuthorizationPolicyProvider>();

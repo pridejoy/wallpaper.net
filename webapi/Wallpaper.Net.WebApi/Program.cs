@@ -7,14 +7,17 @@ namespace Wallpaper.Net.WebApi
         public static void Main(string[] args)
         { 
             var builder = WebApplication.CreateBuilder(args);
+
             //日志
             builder.Logging.ClearProviders();
             builder.Logging.AddConsole();
 
-            // 添加静态文件读取(优先级比较高)
+            //  进行配置注册 | 添加静态文件读取(优先级比较高)
             AppSettings.AddConfigSteup(builder.Configuration);
 
-            //builder.Services.AddSingleton<MemoryCache>();
+            //进行选项注册
+            builder.Services.AddConfigureSetup(builder.Configuration);
+
             // 缓存
             builder.Services.AddCacheSetup();
 
@@ -101,7 +104,7 @@ namespace Wallpaper.Net.WebApi
             // UseCors 必须在 UseRouting 之后，UseResponseCaching、UseAuthorization 之前
             app.UseCors();
 
-            // 先开启认证
+            // 使用身份验证
             app.UseAuthentication();
             // 然后是授权中间件
             app.UseAuthorization(); 
