@@ -7,17 +7,10 @@ using System.Threading.Tasks;
 
 
 public interface ICurrentUserService
-{
-    ClaimsPrincipal User { get; }
-    bool IsAuthenticated { get; }
+{ 
     int? UserId { get; }
-    string? UserName { get; }
-    string[] Roles { get; }
-    string? Name { get; }
-    string? Email { get; }
-    Guid? TenantId { get; }
-    bool IsSuperAdmin { get; }
-    bool IsInRole(string roleName);
+    string? UserName { get; } 
+   
     Claim? FindClaim(string claimType);
     Claim[] FindClaims(string claimType);
     string? FindClaimValue(string claimType);

@@ -27,19 +27,15 @@ public class CurrentUserService : ICurrentUserService
 
     public virtual bool IsAuthenticated => User.Identity!.IsAuthenticated;
 
-    public virtual string? UserName => FindClaimValue(SimpleClaimTypes.UserName); // User.Identity!.Name;
+    public virtual string? UserName => FindClaimValue(JwtConst.UserName); // User.Identity!.Name;
 
-    public virtual string[] Roles => FindClaims(SimpleClaimTypes.Role).Select(c => c.Value).ToArray();
-
-    public virtual string? Name => FindClaimValue(SimpleClaimTypes.Name);
-
-    public virtual string? Email => FindClaimValue(SimpleClaimTypes.Email);
+ 
 
     public virtual int? UserId
     {
         get
         {
-            if (int.TryParse(FindClaimValue(SimpleClaimTypes.UserId), out int result))
+            if (int.TryParse(FindClaimValue(JwtConst.UserId), out int result))
             {
                 return result;
             }
@@ -50,27 +46,8 @@ public class CurrentUserService : ICurrentUserService
         }
     }
 
-    public virtual Guid? TenantId
-    {
-        get
-        {
-            if (Guid.TryParse(FindClaimValue(SimpleClaimTypes.Tenant), out Guid result))
-            {
-                return result;
-            }
-            else
-            {
-                return null;
-            }
-        }
-    }
-
-    public virtual bool IsSuperAdmin => FindClaimValue(SimpleClaimTypes.AdminType) == "SuperAdmin";
-
-    public virtual bool IsInRole(string roleName)
-    {
-        return FindClaims(SimpleClaimTypes.Role).Any(c => c.Value == roleName);
-    }
+     
+     
 
     public virtual Claim? FindClaim(string claimType)
     {

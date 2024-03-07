@@ -53,8 +53,10 @@ namespace Wallpaper.Net.WebApi.Controllers
             string[] roles = new string[] { };
 
             // 生成 token
-            var jwtTokenModel = new JwtTokenModel(1,"李白", roles);
-            string token = JwtHelper.Create(jwtTokenModel);
+            var dic=new Dictionary<string, object>() {
+                { JwtConst.OpenID,"123123"}
+            };
+            string token = JwtHelper.Create(dic);
             //
             _httpContext.HttpContext.SigninToSwagger(token);
             //_httpContext.HttpContext.Response.Headers.Add("access-token", "Bearer "+token);
@@ -71,18 +73,7 @@ namespace Wallpaper.Net.WebApi.Controllers
             return "";
         }
 
-        /// <summary>
-        /// 解析token
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("DeserializeJwt")]
-        [Authorize]
-        public JwtTokenModel DeserializeJwt()
-        {
-            var token = _httpContext.HttpContext.Request.Headers["Authorization"].ObjToString().Replace("Bearer ", "");
 
-            return JwtHelper.DeserializeJwt(token);
-        }
 
 
         [HttpGet("Return401")]

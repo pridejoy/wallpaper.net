@@ -53,9 +53,14 @@ namespace Wallpaper.Net.WebApi.Controllers
             }
 
             //生成Token
-            var jwtmodel = new JwtTokenModel(userId:customerentity.UserID,userName:customerentity.OpenID) ;
+             
+            var dic=new Dictionary<string, object>() {
+               { JwtConst.OpenID,customerentity.OpenID},
+               { JwtConst.UserId,customerentity.UserID}
+            } ;
+            
             // 生成刷新Token令牌
-            var token = JwtHelper.Create(jwtmodel);
+            var token = JwtHelper.Create(dic);
             // 设置Swagger自动登录
             //httpContext.Response.Headers["access-token"] = accessToken;
 
@@ -97,9 +102,13 @@ namespace Wallpaper.Net.WebApi.Controllers
 
 
             //生成Token
-            var jwtmodel = new JwtTokenModel(userId: customerentity.UserID, userName: customerentity.OpenID);
+            
+            var dic = new Dictionary<string, object>() {
+               { JwtConst.OpenID,customerentity.OpenID},
+               { JwtConst.UserId,customerentity.UserID}
+            };
             // 生成刷新Token令牌
-            var token = JwtHelper.Create(jwtmodel);
+            var token = JwtHelper.Create(dic);
 
             // 设置Swagger自动登录
             _httpContext.HttpContext.Response.Headers["access-token"] = token;
