@@ -36,7 +36,8 @@ namespace Wallpaper.Net.WebApi.Controllers
         /// 获取天气描述
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetWeatherForecast")] 
+        [HttpGet("GetWeatherForecast")]
+        [Authorize]
         public IEnumerable<WeatherForecast> Get()
         { 
             return _weatherForecastService.Get();

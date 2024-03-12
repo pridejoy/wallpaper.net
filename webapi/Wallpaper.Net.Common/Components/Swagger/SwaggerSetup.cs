@@ -41,6 +41,21 @@ namespace Wallpaper.Net.Common
 
                 // api有"Authorize" 特性， header中添加 token 传递到后台
                 options.OperationFilter<AuthenticationOperationFilter>();
+                // 添加授权要求
+                //options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                //{
+                //    {
+                //        new OpenApiSecurityScheme
+                //        {
+                //            Reference = new OpenApiReference
+                //            {
+                //                Type = ReferenceType.SecurityScheme,
+                //                Id = "Bearer"
+                //            }
+                //        },
+                //        new string[] {}
+                //    }
+                //});
 
                 // 接入Jwt认证，swagger右上角加上手动可以添加token的按钮
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

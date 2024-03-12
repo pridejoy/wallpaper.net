@@ -1,5 +1,7 @@
 
 
+using Wallpaper.Net.WebApi.Filter;
+
 namespace Wallpaper.Net.WebApi
 {
     public class Program
@@ -26,7 +28,7 @@ namespace Wallpaper.Net.WebApi
             builder.Services.AddControllers(options =>
             {
                 // 全局异常过滤
-                //options.Filters.Add(typeof(GlobalExceptionsFilter));
+                options.Filters.Add<GlobalExceptionFilter>();
                 // 日志过滤器
                 options.Filters.Add(typeof(RequestActionFilter));
             })
@@ -57,8 +59,7 @@ namespace Wallpaper.Net.WebApi
             // 添加jwt认证
             builder.Services.AddJwtSetup();
             // 添加自定义授权
-            builder.Services.AddAuthorizationSetup();
-
+            builder.Services.AddAuthorizationSetup(); 
             // 替换默认 PermissionChecker
             builder.Services.Replace(new ServiceDescriptor(typeof(IPermissionChecker), typeof(PermissionChecker), ServiceLifetime.Transient));
              
@@ -71,8 +72,7 @@ namespace Wallpaper.Net.WebApi
             builder.Services.AddTransient<GalleryServiceController>();
 
             var app = builder.Build();
-             
-
+              
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

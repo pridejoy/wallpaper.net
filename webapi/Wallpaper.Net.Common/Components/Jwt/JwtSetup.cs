@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Wallpaper.Net.Common.Jwt
+namespace Wallpaper.Net.Common
 {
     public static class JwtSetup
     {

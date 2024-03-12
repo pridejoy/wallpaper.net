@@ -12,8 +12,6 @@ global using Swashbuckle.AspNetCore.Swagger;
 global using Swashbuckle.AspNetCore.SwaggerUI;
 
 //项目自带
-global using Wallpaper.Net.Common;
-global using Wallpaper.Net.Common.Helper;
-global using Wallpaper.Net.Common.Jwt;
+global using Wallpaper.Net.Common; 
 global using Wallpaper.Net.Servers;
 global using Wallpaper.Net.WebApi.Filter;
