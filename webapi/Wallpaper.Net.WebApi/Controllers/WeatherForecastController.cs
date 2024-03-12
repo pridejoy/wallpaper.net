@@ -50,16 +50,13 @@ namespace Wallpaper.Net.WebApi.Controllers
         /// <returns></returns>
         [HttpGet("GetToken")]
         public string GetToken()
-        { 
-            string[] roles = new string[] { };
+        {  
 
             // 生成 token
-            var dic=new Dictionary<string, object>() {
+            var dic=new Dictionary<string, string>() {
                 { JwtConst.OpenID,"123123"}
             };
             string token = JwtHelper.Create(dic);
-            //
-            _httpContext.HttpContext.SigninToSwagger(token);
             //_httpContext.HttpContext.Response.Headers.Add("access-token", "Bearer "+token);
             // 将 Token 添加到响应头中 
             return token; 

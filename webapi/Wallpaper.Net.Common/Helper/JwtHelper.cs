@@ -17,7 +17,7 @@ namespace Wallpaper.Net.Common
         /// </summary>
         /// <param name="tokenModel"></param>
         /// <returns></returns>
-        public static string Create(Dictionary<string, object> Dic)
+        public static string Create(Dictionary<string, string> Dic)
         {
             // 获取配置
             string issuer = AppSettings.Jwt.Issuer;
@@ -41,7 +41,7 @@ namespace Wallpaper.Net.Common
 
                };
             
-            Dic.ToList().ForEach(kvp => claims.Add(new Claim(kvp.Key,kvp.Value.ToJson())  ));
+            Dic.ToList().ForEach(kvp => claims.Add(new Claim(kvp.Key,kvp.Value)  ));
 
             //秘钥 (SymmetricSecurityKey 对安全性的要求，密钥的长度太短会报出异常)
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));

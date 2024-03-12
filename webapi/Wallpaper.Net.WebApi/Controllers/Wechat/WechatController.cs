@@ -54,9 +54,9 @@ namespace Wallpaper.Net.WebApi.Controllers
 
             //生成Token
              
-            var dic=new Dictionary<string, object>() {
+            var dic=new Dictionary<string, string>() {
                { JwtConst.OpenID,customerentity.OpenID},
-               { JwtConst.UserId,customerentity.UserID}
+               { JwtConst.UserId,customerentity.UserID.ToString()}
             } ;
             
             // 生成刷新Token令牌
@@ -103,9 +103,9 @@ namespace Wallpaper.Net.WebApi.Controllers
 
             //生成Token
             
-            var dic = new Dictionary<string, object>() {
+            var dic = new Dictionary<string, string>() {
                { JwtConst.OpenID,customerentity.OpenID},
-               { JwtConst.UserId,customerentity.UserID}
+               { JwtConst.UserId,customerentity.UserID.ToString()}
             };
             // 生成刷新Token令牌
             var token = JwtHelper.Create(dic);

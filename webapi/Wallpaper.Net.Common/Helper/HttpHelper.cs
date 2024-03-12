@@ -53,16 +53,5 @@ namespace Wallpaper.Net.Common
         }
 
 
-
-
-        /// <summary>
-        /// 设置swagger自动登录
-        /// </summary>
-        /// <param name="httpContext"></param>
-        /// <param name="token"></param>
-        public static void SigninToSwagger(this HttpContext httpContext, string token)
-        {
-            httpContext.Response.Headers["access-token"] = token;
-        }
     }
 }
