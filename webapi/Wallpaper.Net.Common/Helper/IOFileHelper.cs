@@ -8,7 +8,7 @@ namespace Wallpaper.Net.Common.Helper
 {
     public static class IOFileHelper
     {
-               //相对路径
+          //相对路径
         //await WriteAsync("file.txt", "Hello World", true, "UTF-8");
         //await WriteAsync("subfolder/file.txt", "Hello World", true, "UTF-8");
         /// <summary>

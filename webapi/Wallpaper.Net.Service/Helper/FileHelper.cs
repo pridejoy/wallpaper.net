@@ -17,7 +17,7 @@ namespace Wallpaper.Net.Service
         public static async Task<bool> Write(string Data, string filePath = "", bool IsAppend = true, string Encode = "UTF-8")
         {
             //
-            filePath = filePath.Contains("txt") ? filePath: "logs/"+ filePath + DateTime.Now.ToString("yyyyMMdd") + ".log" ;
+            filePath = filePath.Contains("txt") ? filePath: "logs/"+ filePath+"/" + DateTime.Now.ToString("yyyyMMdd") + ".log" ;
             Encode = string.IsNullOrEmpty(Encode) ? "UTF-8" : Encode;
             Data = DateTime.Now.ToString() + "  :" + Data + "\n";
             try
