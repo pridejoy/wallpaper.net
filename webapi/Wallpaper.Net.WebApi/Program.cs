@@ -1,5 +1,6 @@
 
 
+using Wallpaper.Net.Common.Services;
 using Wallpaper.Net.WebApi.Filter;
 
 namespace Wallpaper.Net.WebApi
@@ -53,8 +54,15 @@ namespace Wallpaper.Net.WebApi
             // 添加基础服务
             builder.Services.AddBaseServicesSetup();
 
+            // 注册 IHttpContextAccessor
+            builder.Services.AddHttpContextAccessor();
+            //服务基类
+            builder.Services.AddScoped<ISimpleService, SimpleService>();
+            ///注册基础服务（当前用户等）
+            builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+
             // 自动添加服务层
-            builder.Services.AddAutoServices("Wallpaper.Net.Servers");
+            builder.Services.AddAutoServices("Room.Net.Servers");
               
             // 添加jwt认证
             builder.Services.AddJwtSetup();
