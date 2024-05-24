@@ -17,12 +17,7 @@ public static class BaseServicesExtensions
     public static IServiceCollection AddBaseServicesSetup(this IServiceCollection services)
     {
 
-        // 注册 IHttpContextAccessor
-        services.AddHttpContextAccessor();
-        //服务基类
-        services.AddScoped<ISimpleService, SimpleService>();
-        ///注册基础服务（当前用户等）
-        services.AddScoped<ICurrentUserService, CurrentUserService>();
+
 
         return services;
     }
