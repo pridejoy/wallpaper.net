@@ -21,3 +21,4 @@ bin-release/
 /web/node_modules/
 /web/uni_modules/*
 /webapi/Wallpaper.Net.WebApi/appsettings.json
+/webapi/.idea
