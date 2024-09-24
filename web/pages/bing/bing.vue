@@ -184,9 +184,9 @@
 					monthstr: str
 				}).then(res => {
 				
-					if (res.success && res.code == 200) {
+					if ( res.code == 200) {
 						// console.log("获取数据每个月", res.data.data)
-						this.classdetails = res.data;
+						this.classdetails = res.body;
 					} else {
 						uni.showToast({
 							icon: 'error',

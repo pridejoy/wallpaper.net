@@ -116,9 +116,9 @@
 			 * */
 			getEverydayBingpic() {  
 		      currDayBing().then(res => {
-				if (res.success && res.code == 200) {
-					// console.log("获取数据", res.data.data)
-					this.binginfo = res.data;
+				if ( res.code == 200) {
+					console.log("获取数据", res)
+					this.binginfo = res.body;
 				} else {
 					uni.showToast({
 						icon: 'error',

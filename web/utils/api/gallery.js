@@ -3,7 +3,7 @@ import request from "@/utils/request"
 //获取分类
 export function getCategorize(params) {
 	return request.get("/api/GalleryService/categorize").then(res => {
-		return res.data
+		return res.body
 	}) 
 }
  

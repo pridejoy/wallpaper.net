@@ -25,13 +25,12 @@ export default {
 				icon: 'gloves',
 				title: '必硬壁纸',
 				url: '/pages/bing/bing'
-			}  ,
-			{
-				icon: 'gloves',
-				title: '瀑布壁纸',
-				url: '/pages/waterfall/waterfall'
-			}
-			,
+			}  , 
+			// {
+			// 	icon: 'gloves',
+			// 	title: '瀑布壁纸',
+			// 	url: '/pages/waterfall/waterfall'
+			// } 
 			{
 				icon: 'gloves',
 				title: '每日必应',

@@ -276,10 +276,10 @@
 				//判断token是否存在
 				var token= uni.getStorageSync("token"); 
 				if(token){
-					getUserInfo().then(res=>{ 
-						if(res.code==200){
-							_that.userInfo = res.data
-							uni.setStorageSync("userinfo", res.data)
+					getUserInfo().then(res=>{  
+						if(res.code==200){ 
+							_that.userInfo = res.body
+							uni.setStorageSync("userinfo", res.body)
 						}
 						 else{
 							 this.userwxLogin();
@@ -299,6 +299,7 @@
 						userLogin({
 							code: res.code
 						}).then(res => {
+							console.log("userLogin",res);
 							uni.setStorageSync("token", res.token)
 							uni.setStorageSync("userinfo", res.userinfo)
 							_that.userInfo = res.userinfo

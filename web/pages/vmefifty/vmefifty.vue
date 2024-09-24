@@ -92,7 +92,7 @@
 					for (let i = 0; i < 10; i++) {
 						getCategImg().then(res => {
 							this.list.push({
-								image: (res.data.imagesURL)
+								image: (res.body.imagesURL)
 							})
 						})
 					}

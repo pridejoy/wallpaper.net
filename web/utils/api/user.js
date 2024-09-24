@@ -2,7 +2,8 @@ import request from "@/utils/request"
 
 export function userLogin(params) {
 	return request.post("/api/Wechat/login", params).then(res => {
-		return res.data
+		console.log("123",res)
+		return res.body
 	})
 }
 
@@ -14,6 +15,6 @@ export function getUserInfo() {
 
 export function updateUserInfo(params) {
 	return request.put("user/update", params).then(res => {
-		return res.data
+		return res.body
 	})
 }

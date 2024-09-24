@@ -23,38 +23,7 @@
 								<view class="item__image">
 									<tn-lazy-load :threshold="6000" height="100%" :image="item.url" :index="item.id"
 										imgMode="widthFix"></tn-lazy-load>
-								</view>
-								<!-- <view class="item__data">
-									<view class="item__title-container">
-										<text class="item__title tn-color-black">{{ item.title }}</text>
-									</view>
-									<view v-if="item.tags && item.tags.length > 0" class="item__tags-container">
-										<view v-for="(tagItem, tagIndex) in item.tags" :key="tagIndex"
-											class="item__tag">{{ tagItem }}</view>
-									</view>
-
-									 <view class="tn-flex tn-flex-row-between tn-flex-col-center tn-padding-top-xs">
-										<view class="justify-content-item">
-											<view class="tn-flex tn-flex-col-center tn-flex-row-left">
-												<view class="logo-pic">
-													<view class="logo-image">
-														<view class=""
-															:style="'background-image:url('+ item.userImage +');width: 40rpx;height: 40rpx;background-size: cover;'">
-														</view>
-													</view>
-												</view>
-												<view class="tn-padding-left-xs">
-													<text class="tn-color-gray tn-text-sm">{{ item.userName }}</text>
-												</view>
-
-											</view>
-										</view>
-										<view class="justify-content-item">
-											<text class="tn-icon-rocket tn-color-gray tn-padding-right-xs"></text>
-											<text class="tn-color-gray">{{ item.viewUser.viewUserCount }}</text>
-										</view>
-									</view> 
-								</view> -->
+								</view> 
 							</view>
 						</template>
 						<template v-slot:right="{ rightList }">

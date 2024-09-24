@@ -17,6 +17,10 @@ Wallpaper.Net （迷恋图库）是一款基于Net+Vue+UNIAPP+TUNIAOUI的开源�
 
 ![](./doc/images/wx7560d334dd837f70.jpg)
 
+#### ✨后端代码
+
+<https://gitee.com/Pridejoy/MalusAdmin>
+
 #### 🍎效果截图
 
 <table>
@@ -27,17 +31,17 @@ Wallpaper.Net （迷恋图库）是一款基于Net+Vue+UNIAPP+TUNIAOUI的开源�
   </tr>
   <tr>
     <td><img src="./doc/images/5.png" width="100%"/></td>
-    <td><img src="./doc/images/6.png" width="100%"/></td> 
-    <td><img src="./doc/images/7.png" width="100%"/></td> 
+    <td><img src="./doc/images/6.png" width="100%"/></td>
+    <td><img src="./doc/images/7.png" width="100%"/></td>
   </tr>
   <tr>
     <td><img src="./doc/images/8.png" width="100%"/></td>
     <td><img src="./doc/images/9.png" width="100%"/></td>
-    <td><img src="./doc/images/10.png" width="100%"/></td> 
+    <td><img src="./doc/images/10.png" width="100%"/></td>
   </tr>
   <tr>
-    <td colspan="3"><img src="./doc/images/11.png" width="100%"/></td> 
-  </tr> 
+    <td colspan="3"><img src="./doc/images/11.png" width="100%"/></td>
+  </tr>
 </table>
 
 #### 🍖基本设计思路
@@ -47,14 +51,14 @@ Wallpaper.Net （迷恋图库）是一款基于Net+Vue+UNIAPP+TUNIAOUI的开源�
 * [ ] 创建表库
 * [ ] 后台服务（每天自动更新）
 
-- 依赖于抽象
+* 依赖于抽象
   
   依赖倒置原则，控制反转（IoC）
-- 切面编程（AOP）
+* 切面编程（AOP）
   
   权限、日志、异常等通过过滤器（Filter）或中间件（Middleware）等实现，集中编程
-- 可配置
-- 自动注册
+* 可配置
+* 自动注册
   
   自动注册实体（Entity）、自动注册服务类（Service）等
 
@@ -87,6 +91,3 @@ QQ交流群：725883767
 
 欢迎关注公众号：【Net分享】
 ![Net分享](./doc/images/netfenxiang.png)
-
-
-

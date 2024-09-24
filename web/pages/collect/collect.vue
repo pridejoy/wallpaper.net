@@ -256,14 +256,15 @@
       getRandomData() { 
         this.loadStatus = 'loading' 
 		likeImgList(this.param).then(res => {
-			if (res.success && res.code == 200) {
+			console.log(res)
+			if ( res.code == 200) {
 				//数据加载完
 				this.param.Page++;
-					console.log("获取数据失败了",res.data.rows.length )
-				if (res.data.rows.length == 0) {
+					console.log("获取数据失败了",res.body.rows.length )
+				if (res.body.rows.length == 0) {
 					this.loadStatus = 'loadmore'
 				}
-				this.list.push(...res.data.rows); 
+				this.list.push(...res.body.rows); 
 			} else {
 				console.log("获取数据失败了")
 			}

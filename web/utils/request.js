@@ -2,13 +2,14 @@ import Request from "luch-request"
 
 // 这里填写你后端的api地址 
 let baseUrl = "https://gallery.hunji.xyz"
-// let baseUrl = "https://localhost:7057"
+ // let baseUrl = "https://localhost:7018"
 
 const http = new Request({
 	baseURL: baseUrl,
 	timeout: 5000,
 	responseType: "application/json",
 })
+// 请求之前拦截器
 http.interceptors.request.use((config) => {
 		/* 请求之前拦截器。可以使用async await 做异步操作 */
 	config.header = {
@@ -20,9 +21,12 @@ http.interceptors.request.use((config) => {
 	}
 	return config
 })
+
 http.interceptors.response.use((response) => {
+	console.log("正常相应返回的",response)
 	return response.data
 }, (response) => {
+	/*  对响应错误做点什么 （statusCode !== 200）*/
 	if (response.statusCode === 200 && response.data.code === 401) {
 		 uni.navigateTo({
 			url: '/pageA/login/login'

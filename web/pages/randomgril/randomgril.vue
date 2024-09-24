@@ -200,13 +200,13 @@
 					type:this.type
 				}).then(res => {
 					if (res.code === 200) {
-						this.swiperList[0] = res.data.imagesURL;
-						this.imagesID = res.data.imagesID;
-						this.islike = res.data.islike; //
-						this.verticalScreen = res.data.verticalScreen;
+						this.swiperList[0] = res.body.imagesURL;
+						this.imagesID = res.body.imagesID;
+						this.islike = res.body.islike; //
+						this.verticalScreen = res.body.verticalScreen;
 						this.shareimgid = 0
-						if(res.data.customer_collect!=null){
-							if(res.data.customer_collect.isLike){this.like = true}
+						if(res.body.customer_collect!=null){
+							if(res.body.customer_collect.isLike){this.like = true}
 							else{this.dislike = false} 
 						}else{
 							this.like=false;

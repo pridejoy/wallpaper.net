@@ -169,11 +169,10 @@
 					success(res) {
 						userLogin({
 							code: res.code
-						}).then(res => {  
+						}).then(res => {   
 							uni.setStorageSync("token", res.token)
 							uni.setStorageSync("userinfo", res.userinfo)
-							uni.navigateBack()
-							console.log("执行了");
+							uni.navigateBack() 
 						})
 					}
 				})

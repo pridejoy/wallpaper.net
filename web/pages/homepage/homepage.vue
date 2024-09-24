@@ -8,13 +8,13 @@
 					<view class="tn-icon-menu" style="font-size: 50rpx;"></view>
 				</view>
 				<!-- 搜索框 -->
-				<view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center" @click="navigateto('')">
+	<!-- 			<view class="custom-nav__search tn-flex tn-flex-col-center tn-flex-row-center" @click="navigateto('')">
 					<view class="custom-nav__search__box tn-flex tn-flex-col-center tn-flex-row-left"
 						style="background-color: rgba(230,230,230,0.3);">
 						<view class="custom-nav__search__icon tn-icon-search tn-color-gray"></view>
 						<view class="custom-nav__search__text tn-padding-left-xs tn-color-gray">搜索 </view>
 					</view>
-				</view>
+				</view> -->
 			</view>
 		</tn-nav-bar>
 
@@ -22,10 +22,10 @@
 			:style="{paddingTop: vuex_custom_bar_height + 'px'}">
 			<view class="justify-content-item tn-margin-left" @click="navigateto('')">
 				<view class="tn-text-bold tn-text-lg tn-padding-bottom-xs">
-					Hi 早安，抓住那只猪
+					Hi 欢迎光临，迷恋图库
 				</view>
 				<view class="tn-text-xs tn-color-cat" style="opacity: 0.5;">
-					清晨的毒鸡汤，已为你备好，趁热喝了叭
+				   行至朝雾里，坠入暮云间
 				</view>
 			</view>
 			<view class="justify-content-item tn-color-cat tn-text-right">
@@ -36,135 +36,53 @@
 			</view>
 		</view>
 
-		<swiper class="card-swiper" @click="navigateto('')" :circular="true" :autoplay="true" duration="500" interval="8000"
-			@change="cardSwiper">
-			<swiper-item v-for="(item,index) in swiperList" :key="index" :class="cardCur==index?'cur':''">
-				<view class="swiper-item image-banner"
-					:style="'background-image:url('+ item.url + ');background-size: cover;border-radius: 15rpx;'">
-				</view>
-				<view class="swiper-item-text">
-					<view class="tn-text-bold tn-color-white" style="font-size: 50rpx;">{{item.title}}</view>
-					<view class="tn-color-white tn-padding-top" style="font-size: 30rpx;">{{item.name}}</view>
-					<view class="tn-text-sm tn-text-bold tn-color-white tn-padding-top-sm tn-padding-bottom-sm">
-						{{item.text}}
-					</view>
-				</view>
-			</swiper-item>
-		</swiper>
+ 
+ 
 
-		<view class="indication">
-			<block v-for="(item,index) in swiperList" :key="index">
-				<view class="spot" :class="cardCur==index?'active':''"></view>
-			</block>
-		</view>
-
-
-
-		<!-- 方式10 start-->
-		<view class="tn-flex tn-margin-top">
-			<view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-					<view
-						class="icon10__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-blue tn-color-white">
-						<view class="tn-icon-image-fill"></view>
-					</view>
-					<view class="tn-color-black tn-text-lg tn-text-center">
-						<text class="tn-text-ellipsis">相册</text>
-					</view>
-				</view>
-			</view>
-			<view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-					<view
-						class="icon10__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-red tn-color-white">
-						<view class="tn-icon-live-stream-fill"></view>
-					</view>
-					<view class="tn-color-black tn-text-lg tn-text-center">
-						<text class="tn-text-ellipsis">分类</text>
-					</view>
-				</view>
-			</view>
-			<view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-					<view
-						class="icon10__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-orange tn-color-white">
-						<view class="tn-icon-image-text-fill"></view>
-					</view>
-					<view class="tn-color-black tn-text-lg tn-text-center">
-						<text class="tn-text-ellipsis">标签</text>
-					</view>
-				</view>
-			</view>
-			<view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius">
-				<view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-					<view
-						class="icon10__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-purple tn-color-white">
-						<view class="tn-icon-topics-fill"></view>
-					</view>
-					<view class="tn-color-black tn-text-lg tn-text-center">
-						<text class="tn-text-ellipsis">归档</text>
-					</view>
-				</view>
-			</view>
-			<view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius">
-        <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
-          <view class="icon10__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur tn-bg-cyan tn-color-white">
-            <view class="tn-icon-discover-fill"></view>
-          </view>  
-          <view class="tn-color-black tn-text-lg tn-text-center">
-            <text class="tn-text-ellipsis">搜索</text>
-          </view>
-        </view>
-      </view>
-		</view>
-		<!-- 方式10 end-->
-
-
-		<view class="tn-padding-bottom-lg">
-			<!-- 图文 -->
-			<view class="tn-flex tn-flex-direction-column">
-				<block v-for="(item,index) in content" :key="index">
-					<view class="tn-blogger-content__wrap" @click="navigateto('../content/contentinfo?articleId='+item.articleId)">
-						<view class="tn-shadow-blur image-pic" :style="'background-image:url(' + item.articleCover + ')'" > 	
-						<view >
-						</view> </view>
-						<view class="tn-blogger-content__label tn-text-justify">
-							<text class="tn-blogger-content__label__desc tn-text-lg tn-text-bold tn-color-cat">{{ item.title }}</text>
-						</view>
-
-						<view class="tn-flex tn-flex-row-between tn-flex-col-center tn-margin-top-xs">
-							<view class="justify-content-item tn-flex tn-flex-col-center">
-								<view style="margin-right: 10rpx;margin-left: 0rpx;">
-									<view class="tn-color-gray">
-										<text class="tn-blogger-content__count-icon tn-icon-flower"></text>
-										<text class="tn-padding-right">{{ item.createdTime }}</text>
-										<text class="tn-blogger-content__count-icon tn-icon-message"></text>
-										<text class="tn-padding-right">{{ item.commentCount }}</text>
-										<text class="tn-blogger-content__count-icon tn-icon-like"></text>
-										<text class="">{{ item.likeCount }}</text>
-									</view>
+	<view class="">
+			<view class="" v-if="current==0">
+				<view class="" style="padding: 30rpx 20rpx;">
+					<tn-waterfall ref="waterfall" v-model="list" @finish="handleWaterFallFinish">
+						<template v-slot:left="{ leftList }">
+							<view v-for="(item, index) in leftList" :key="item.waterfallId" class="wallpaper__item"
+								@click="imagepreview(item.url)">
+								<view class="item__image">
+									<tn-lazy-load :threshold="6000" height="100%" :image="item.url" :index="item.id"
+										imgMode="widthFix"></tn-lazy-load>
+								</view> 
+							</view>
+						</template>
+						<template v-slot:right="{ rightList }">
+							<view class="tn-color-black tn-text-bold tn-bg-yellow home-shadow"
+								style="height: 160rpx;margin: 0 10rpx 20rpx 10rpx;border-radius: 10rpx;">
+								<view class="tn-padding-left tn-padding-top-lg">
+									Random ·Girl
+								</view>
+								<view class="tn-padding-left tn-padding-top-xs">
+									Photos 10000+
+									<text class="tn-icon-right tn-padding-left-xs"></text>
 								</view>
 							</view>
-							
-							<view class="justify-content-item tn-text-center">
-								<view v-for="(label_item,label_index) in item.label" :key="label_index"
-									class="tn-blogger-content__label__item tn-float-left">
-									<text class="tn-blogger-content__label__item--prefix tn-icon-topics-fill"></text>
-									{{ label_item }}
+							<view v-for="(item, index) in rightList" :key="item.waterfallId" class="wallpaper__item">
+								<view class="item__image" @click="imagepreview(item.url)">
+									<tn-lazy-load :threshold="6000" height="100%" :image="item.url" :index="item.id"
+										imgMode="widthFix"></tn-lazy-load>
 								</view>
 							</view>
-							
-						</view>
-					</view>
-
-				</block>
+						</template>
+					</tn-waterfall>
+				</view>
+				<tn-load-more :status="loadStatus"></tn-load-more>
 			</view>
+
 
 		</view>
 
-		<view class='tn-tabbar-height'></view>
+	 
+ 
+		<!-- <view class='tn-tabbar-height'></view> -->
 		<!-- 回到首页悬浮按钮-->
-		<nav-index-button></nav-index-button>
+		<!-- <nav-index-button></nav-index-button> -->
 	</view>
 </template>
 
@@ -172,7 +90,7 @@
 	// import {
 	// 	getArticlePage
 	// } from '@/api/blog.js';
-		import NavIndexButton from '@/libs/components/nav-index-button.vue'
+	import NavIndexButton from '@/libs/components/nav-index-button.vue'
 	export default {
 		name: 'Index',
 		components: {
@@ -184,41 +102,7 @@
 				param: {
 					page: 1,
 					pageSize: 15
-				},
-				swiperList: [{
-					id: 0,
-					type: 'image',
-					title: '简约商务',
-					name: '更多彩蛋等你探索',
-					url: 'https://tnuiimage.tnkjapp.com/simple/banner2.jpg',
-				}, {
-					id: 1,
-					type: 'image',
-					title: '合作勾搭',
-					name: '作者微信 tnkewo',
-					url: 'https://tnuiimage.tnkjapp.com/simple/image3.jpg',
-				}, {
-					id: 2,
-					type: 'image',
-					title: '海量分享',
-					name: '总有你想不到的创意',
-					url: 'https://tnuiimage.tnkjapp.com/simple/image2.jpg',
-				}, {
-					id: 3,
-					type: 'image',
-					title: '酷炫多彩',
-					name: '更多彩蛋等你探索',
-					url: 'https://tnuiimage.tnkjapp.com/simple/banner0.jpg',
-				}, {
-					id: 4,
-					type: 'image',
-					title: '适配多端',
-					name: 'APP、微信小程序、H5、Finclip',
-					url: 'https://tnuiimage.tnkjapp.com/simple/image0.jpg',
-				}],
-				content: [
-
-				]
+				} 
 			}
 		},
 		created() {

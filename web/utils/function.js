@@ -1,5 +1,5 @@
 import { templateSubscribe } from '@/utils/api/message.js'
-import {	userLogin } from '@/utils/api/user'
+import {userLogin } from '@/utils/api/user'
 export default {
 	downloadImage: (url) => {
 		wx.downloadFile({
